@@ -1,25 +1,30 @@
 import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import About from './components/About';
+import Error from './components/Error';
+import Footer from './components/Footer';
+import NavBar from './components/NavBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  
+  state = {
+    imgUrl: ''
+  }
+
+  componentDidMount(){
+    fetch('https://picsum.photos/200').then(resp => this.setState({imgUrl: resp.url}))
+  }
+  
+  render() {
+    return (
+      <div className="App">
+        <NavBar />
+        <img src={this.state.imgUrl}></img>
+        <Footer />
+      </div>
+    );
+
+  }
 }
 
 export default App;
