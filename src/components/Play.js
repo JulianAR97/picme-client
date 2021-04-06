@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Loading from './Loading'
 import completeState from '../helpers/completeState'
 import Pic from './Pic'
+import generateURL from '../helpers/generateURL'
 
 export class Play extends Component {
   state = {
@@ -12,7 +13,7 @@ export class Play extends Component {
 
   componentDidMount(){
     // 200 specifies that the picture will be a square 200x200px
-    fetch('https://picsum.photos/400/300')
+    fetch(generateURL())
       .then(resp => {
         this.setState({imgUrl: resp.url})
         return resp.url })
