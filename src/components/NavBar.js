@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-export class NavBar extends Component {
+class NavBar extends Component {
   render() {
     return (
       <div>
-        <ul>Play</ul>
-        <ul>MyCollection</ul>
+        <ul>
+          <li><Link to="/play">Play</Link></li>
+          <li><Link to="/">MyCollection</Link></li>
+        </ul>
       </div>
     )
   }
