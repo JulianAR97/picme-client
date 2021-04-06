@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-export class Error extends Component {
+export class Play extends Component {
   render() {
     return (
       <div>
-        
+        Play Page
       </div>
     )
   }
 }
 
-export default Error
+export default Play

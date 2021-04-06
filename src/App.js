@@ -1,7 +1,8 @@
-import logo from './logo.svg';
 import React, {Component} from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './components/About';
-import Error from './components/Error';
+import Play from './components/Play.js';
+import ErrorPage from './components/ErrorPage';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import completeState from './helpers/completeState'
@@ -39,11 +40,17 @@ class App extends Component {
     }
     
     return (
-      <div className="App">
+      <Router>
         <NavBar />
+        <Switch>
+            <Route exact path="/" component={ About } />
+            <Route exact path="/play" component={ Play } />
+            <Route component={ErrorPage} />
+        </Switch>
         <img src={this.state.imgUrl} alt="random"></img>
         <Footer />
-      </div>
+
+      </Router>
     );
 
   }
