@@ -5,10 +5,8 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <ul>
-          <li><Link to="/play">Play</Link></li>
-          <li><Link to="/">MyCollection</Link></li>
-        </ul>
+        <p><Link to="/play">Play</Link></p>
+        <p><Link to="/">MyCollection</Link></p>
       </div>
     )
   }
