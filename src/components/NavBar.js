@@ -1,15 +1,75 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import Link from '@material-ui/core/Link'
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem'
+import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
-class NavBar extends Component {
-  render() {
-    return (
-      <div>
-        <p><Link to="/play">Play</Link></p>
-        <p><Link to="/">MyCollection</Link></p>
-      </div>
-    )
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
+
+const NavBar = () => {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
   }
+  
+  const handleClose = () => {
+    setAnchorEl(null);
+  }
+  
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" aria-controls="nav-menu" onClick={handleClick} >
+            <MenuIcon />
+          </IconButton>
+          
+          <Typography variant="h6" className={classes.title}>
+            PicMe
+          </Typography>
+          
+          <Menu
+            id="nav-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>
+              <Link color="inherit" aria-current="page" href="/play">play</Link>   
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link aria-current="page" href="/" color="textPrimary">myCollection</Link>
+            </MenuItem>
+
+          </Menu>
+
+        </Toolbar>
+      </AppBar>
+      <br />
+
+    </div>
+   
+    
+  )
 }
 
 export default NavBar
