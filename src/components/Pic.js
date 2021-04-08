@@ -6,10 +6,10 @@ export class Pic extends Component {
   
   
   render() {
-    const {imgUrl, author} = this.props
+    const {url, author} = this.props
     return (
       <div>
-        <img src={imgUrl} alt="random"/>
+        <img src={url} alt="random"/>
         <p>Photo By: {author}</p>
       </div>
     )
