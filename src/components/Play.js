@@ -1,45 +1,63 @@
 import React, { Component } from 'react'
-import Loading from './Loading'
-import completeState from '../helpers/completeState'
+import { connect } from 'react-redux'
+import { getPic, addPic, updatePic } from '../actions/picActions'
 import Pic from './Pic'
-import generateURL from '../helpers/generateURL'
+import Button from './Button'
+import Loading from './Loading'
 
 export class Play extends Component {
-  state = {
-    imgUrl: '',
-    id: '',
-    author: ''
+
+  componentDidMount() {
+    this.props.getPic()
+    // if (this.props.pics.find(p => p.id === this.props.pic.id)) {
+    //   this.setState({
+    //     existingPic: true
+    //   })
+    // }
   }
 
-  componentDidMount(){
-    // 200 specifies that the picture will be a square 200x200px
-    fetch(generateURL())
-      .then(resp => {
-        this.setState({imgUrl: resp.url})
-        return resp.url })
-      .then(url => {
-        // url will be in form "https://i.picsum.photos/id/73/200/200.jpg?hmac=IYjgRq-Ok9gn3_MVxJ4TlfhLPONQ97qWvp2Ir1Y1z6c"
-        let id = url.split('/')[4];
-        this.setState({id});
-        fetch(`https://picsum.photos/id/${id}/info`)
-          .then(resp => resp.json())
-          .then(json => this.setState({author: json.author}))
-      })
+  handleClick = (e) => {
+    let pic = this.props.pics.find(p => p.id === Number(this.props.pic.id))
+    
+    if (e.target.name === 'upvote') {
+      if (pic) {
+        this.props.updatePic({...pic, likes: pic.likes + 1})
+      } else {
+        this.props.addPic({...this.props.pic, likes: this.props.pic.likes + 1})
+      }
+    } else {
+      if (pic) {
+        console.log('hit update:', pic)
+        this.props.updatePic({...pic, likes: pic.likes - 1})
+      }
+    }
+    this.props.getPic()
   }
   
   render() {
-    if (!completeState(this.state)) {
+    if (this.props.picLoading) {
+      return <Loading />
+    } else {
+      
+      const {pic} = this.props
+      
       return (
-        // Replace with loading wheel
-        <Loading />
+        
+        <div>
+          <Pic url={pic.url} author={pic.author} />
+          <Button name="downvote" handleClick={this.handleClick} text="minus"/>
+          <Button name="upvote" handleClick={this.handleClick} text="check"/>
+        </div>
+      
       )
     }
-    return (
-      <div>
-        <Pic imgUrl={this.state.imgUrl} author={this.state.author} />
-      </div>
-    )
   }
 }
 
-export default Play
+const mapStateToProps = state => ({
+  pic: state.pic,
+  pics: state.pics,
+  picLoading: state.picLoading,
+})
+
+export default connect(mapStateToProps, {getPic, addPic, updatePic})(Play)
