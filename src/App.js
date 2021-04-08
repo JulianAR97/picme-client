@@ -8,10 +8,12 @@ import Play from './components/Play.js';
 import ErrorPage from './components/ErrorPage';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
+import { ThemeProvider } from '@material-ui/core/styles'
+import mainTheme from './styles/mainTheme'
 
 
 class App extends Component {
-  
+  const
   componentDidMount() {
     this.props.getPics()
   }
@@ -21,16 +23,19 @@ class App extends Component {
     }
 
     return (
-      <Router>
-        <NavBar />
-        <Switch>
-            <Route exact path="/" component={ About } />
-            <Route exact path="/play" component={ Play } />
-            <Route component={ErrorPage} />
-        </Switch>
-        <Footer />
+      <ThemeProvider theme={mainTheme}>
 
-      </Router>
+        <Router>
+          <NavBar />
+          <Switch>
+              <Route exact path="/" component={ About } />
+              <Route exact path="/play" component={ Play } />
+              <Route component={ErrorPage} />
+          </Switch>
+          <Footer />
+
+        </Router>
+      </ThemeProvider>
     );
 
   }
