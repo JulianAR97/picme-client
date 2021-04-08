@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
+import Loading from './components/Loading'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { getPics } from './actions/picActions';
 import About from './components/About';
 import Play from './components/Play.js';
 import ErrorPage from './components/ErrorPage';
@@ -9,9 +12,14 @@ import NavBar from './components/NavBar';
 
 class App extends Component {
   
-  
+  componentDidMount() {
+    this.props.getPics()
+  }
   render() {
-    
+    if (this.props.picsLoading) {
+      return <Loading />
+    }
+
     return (
       <Router>
         <NavBar />
@@ -28,4 +36,5 @@ class App extends Component {
   }
 }
 
-export default App;
+
+export default connect(state => ({ loading: state.loading }), {getPics})(App);
