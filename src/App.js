@@ -9,7 +9,7 @@ import ErrorPage from './components/ErrorPage';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import { ThemeProvider } from '@material-ui/core/styles'
-import mainTheme from './styles/mainTheme'
+import mainTheme from './styles/theming'
 
 
 class App extends Component {
