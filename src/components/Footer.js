@@ -7,7 +7,7 @@ const Footer = () => {
     <div style={{align: 'center'}}>
       <Typography variant="body2" align="center">
           <p>&copy;PicMe 2021</p>
-          <p>Powered By &copy;Picsum</p>
+          <p>Powered By Picsum</p>
       </Typography>
     </div>
   )
