@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
+import Typography from '@material-ui/core/Typography';
 
-export class Footer extends Component {
-  render() {
-    return (
-      <div>
-        <p>&copy;PicMe 2021</p>
-        <p>Powered By &copy;Picsum</p>
-      </div>
-    )
-  }
+const Footer = () => {
+
+  return (
+    <div style={{align: 'center'}}>
+      <Typography variant="body2" align="center">
+          <p>&copy;PicMe 2021</p>
+          <p>Powered By &copy;Picsum</p>
+      </Typography>
+    </div>
+  )
+
 }
 
 export default Footer
