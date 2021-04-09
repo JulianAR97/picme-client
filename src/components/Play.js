@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getPic, addPic, updatePic } from '../actions/picActions'
-import Pic from './Pic'
+import PicContainer from '../containers/PicContainer'
 import Button from './Button'
 import Loading from './Loading'
 
@@ -44,7 +44,7 @@ export class Play extends Component {
       return (
         
         <div>
-          <Pic url={pic.url} author={pic.author} />
+          <PicContainer url={pic.url} author={pic.author} />
           <Button name="downvote" handleClick={this.handleClick} text="minus"/>
           <Button name="upvote" handleClick={this.handleClick} text="check"/>
         </div>
