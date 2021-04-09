@@ -1,19 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-
-export class Pic extends Component {
+const Pic = (props) => {
   
-  
-  
-  render() {
-    const {url, author} = this.props
-    return (
-      <div>
-        <img src={url} alt="random"/>
-        <p>Photo By: {author}</p>
-      </div>
-    )
-  }
+  return (
+    <>
+      <img src={props.url} alt="random" style={props.style}/>
+    </>
+  )
 }
 
 export default Pic
