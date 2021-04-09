@@ -1450,7 +1450,7 @@
 
 "@material-ui/system@^4.11.3":
   version "4.11.3"
-  resolved "https://registry.npmjs.org/@material-ui/system/-/system-4.11.3.tgz"
+  resolved "https://registry.yarnpkg.com/@material-ui/system/-/system-4.11.3.tgz#466bc14c9986798fd325665927c963eb47cc4143"
   integrity sha512-SY7otguNGol41Mu2Sg6KbBP1ZRFIbFLHGK81y4KYbsV2yIcaEPOmsCK6zwWlp+2yTV3J/VwT6oSBARtGIVdXPw==
   dependencies:
     "@babel/runtime" "^7.4.4"
