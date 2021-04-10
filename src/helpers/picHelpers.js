@@ -9,3 +9,7 @@ export const removeHighlight = () => {
     sC.classList.remove('highlightGreen', 'highlightRed')
   }
 }
+
+export const sortByLikes = (pics) => {
+  return pics.sort((a, b) => a.likes > b.likes ? -1 : a.likes < b.likes ? 1 : 0)
+}
