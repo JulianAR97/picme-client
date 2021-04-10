@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addPic, updatePic } from '../actions/picActions'
+// import { addPic, updatePic } from '../actions/picActions'
 import Pic from '../components/Pic';
 
 const picStyle = {
@@ -49,11 +49,11 @@ class PicCollection extends Component {
   renderPics = (divNum) => {
     return this.props.pics.map((pic, idx) => {
       if (idx % 2 === 0 && divNum === 1) {
-        console.log('first case')
         return <Pic key={pic.id} url={pic.url} style={picStyle}/>
       } else if (idx % 2 !== 0 && divNum === 2) {
-        console.log('second case')
         return <Pic key={pic.id} url={pic.url} style={picStyle}/>
+      } else {
+        return null
       }
     })
   }
@@ -74,10 +74,11 @@ class PicCollection extends Component {
 }
 
 const mapStateToProps = state => {
+
   if (window.location.pathname === '/hottest') {
-    return({pics: state.pics})
+    return({pics: state.hottest})
   } else {
-    return({pics: ['pic1', 'pic2']})
+    return({pics: state.pics})
   }
 }
 
