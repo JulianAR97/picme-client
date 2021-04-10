@@ -70,3 +70,5 @@ export const updatePic = (pic) => {
       })
   }
 }
+
+// Use multiple action files and then link them 
