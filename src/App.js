@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { getPics } from './actions/picActions';
 import About from './components/About';
-import Play from './components/Play.js';
+import Play from './components/Play'
 import ErrorPage from './components/ErrorPage';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
@@ -13,10 +13,11 @@ import mainTheme from './styles/theming'
 
 
 class App extends Component {
-  const
+
   componentDidMount() {
     this.props.getPics()
   }
+
   render() {
     if (this.props.picsLoading) {
       return <Loading />
