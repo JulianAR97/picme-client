@@ -4,7 +4,7 @@ import { getPic, addPic, updatePic } from '../actions/picActions'
 import Typography from '@material-ui/core/Typography';
 import Loading from '../components/Loading'
 import VoteButton from '../components/VoteButton'
-// import { removeHighlight } from '../helpers/picHelpers'
+import { removeHighlight } from '../helpers/picHelpers'
 import Pic from '../components/Pic'
 import '../styles/picStyle.css'
 
@@ -34,24 +34,39 @@ class PicContainer extends Component {
         this.props.updatePic({...pic, likes: pic.likes - 1})
       }
     }
+    // Still lagging. Look into component lifecycle methods
+    const updateVoteButton = () => {
+      if (!this.props.picLoading) {
+        removeHighlight()
+      } else {
+        setTimeout(updateVoteButton, 300)
+      }
+    }
     setTimeout(() => {
       this.props.getPic()
+      updateVoteButton()
     }, 1000)
   }
 
   render() {
+    
     if (this.props.picLoading) {
+      
       return <Loading />
+    
     } else {
+      
       const {pic} = this.props
     
       return (
         <>
+          
           <div className="container picContainer">
             <Pic url={pic.url} alt="random" style={{height: '100%', width: '100%', objectFit: 'contain'}}/>
             <VoteButton className="subContainer left" handleClick={this.handleClick} />
             <VoteButton className="subContainer right" handleClick={this.handleClick} />
           </div>
+          
           <Typography variant="body2" align="center">
             Photo By: {pic.author}
           </Typography>
