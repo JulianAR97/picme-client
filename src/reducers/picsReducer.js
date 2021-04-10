@@ -1,11 +1,15 @@
+import {sortByLikes} from '../helpers/picHelpers'
+
 const initialState = {
   pic: {},
   picsLoading: true,
   picLoading: true,
-  pics: []
+  pics: [],
+  hottest: []
 }
 
 const picsReducer = (state = initialState, action) => {
+  
   switch (action.type) {
     case "LOADING":
       return {
@@ -25,7 +29,9 @@ const picsReducer = (state = initialState, action) => {
       return {
         ...state,
         picsLoading: false,
-        pics: action.pics
+        pics: action.pics,
+        // add hottest here so that only one fetch call needs to be make to api
+        hottest: sortByLikes(action.pics).slice(0, 100)
       }
     
     case "ADD_PIC":
@@ -43,7 +49,10 @@ const picsReducer = (state = initialState, action) => {
       })
     default:
       return state;
+    
   }
 }
 
 export default picsReducer
+
+// use separate reducer file for other actions
