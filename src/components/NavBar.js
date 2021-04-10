@@ -48,11 +48,16 @@ const NavBar = () => {
             onClose={handleClose}
           >
             <MenuItem onClick={handleClose}>
-              <Link color="inherit" aria-current="page" href="/play" style={{textDecoration: 'none'}}>play</Link>   
+              <Link aria-current="page" href="/play" style={{color: 'inherit', textDecoration: 'none'}}>play</Link>   
             </MenuItem>
             <MenuItem onClick={handleClose}>
-              <Link aria-current="page" href="/" color="textPrimary" style={{textDecoration: 'none'}}>myCollection</Link>
+              <Link aria-current="page" href="/" style={{color: 'inherit', textDecoration: 'none'}}>myCollection</Link>
             </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link aria-current="page" href="/hottest" style={{color: 'inherit', textDecoration: 'none'}}>hottest</Link>   
+            </MenuItem>
+
+            
 
           </Menu>
 
