@@ -3,6 +3,7 @@ import Loading from './components/Loading'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { getPics } from './actions/picActions';
+import PicCollection from './containers/PicCollection'
 import About from './components/About';
 import Play from './components/Play'
 import ErrorPage from './components/ErrorPage';
@@ -23,6 +24,7 @@ class App extends Component {
       return <Loading />
     }
 
+
     return (
       <ThemeProvider theme={mainTheme}>
 
@@ -31,6 +33,7 @@ class App extends Component {
           <Switch>
               <Route exact path="/" component={ About } />
               <Route exact path="/play" component={ Play } />
+              <Route exact path="/hottest" component={ PicCollection } />
               <Route component={ErrorPage} />
           </Switch>
           <Footer />
@@ -38,9 +41,15 @@ class App extends Component {
         </Router>
       </ThemeProvider>
     );
+    
+
 
   }
 }
 
+const mapStateToProps = state =>  ({
+  loading: state.loading,
+})
 
-export default connect(state => ({ loading: state.loading }), {getPics})(App);
+
+export default connect(mapStateToProps, {getPics})(App);
