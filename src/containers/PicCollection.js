@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { addPic, updatePic } from '../actions/picActions'
 import Pic from '../components/Pic';
+import '../styles/picStyles.css'
 
 const picStyle = {
   width: '80%',
@@ -48,14 +49,22 @@ class PicCollection extends Component {
   // All even number pics will be rendered to the left, and odds on the right
   renderPics = (divNum) => {
     return this.props.pics.map((pic, idx) => {
-      if (idx % 2 === 0 && divNum === 1) {
-        return <Pic key={pic.id} url={pic.url} style={picStyle}/>
-      } else if (idx % 2 !== 0 && divNum === 2) {
-        return <Pic key={pic.id} url={pic.url} style={picStyle}/>
-      } else {
-        return null
-      }
-    })
+        if (idx % 2 === 0 && divNum === 1) {
+          return (
+            <div>
+              <Pic key={pic.id} url={pic.url} style={picStyle}/>
+            </div>
+          )     
+        } else if (idx % 2 !== 0 && divNum === 2) {
+          return (
+          <div>
+            <Pic key={pic.id} url={pic.url} style={picStyle}/>
+          </div>
+          )
+        } else {
+          return null
+        }
+      })
   }
   
   render() {
