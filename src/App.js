@@ -28,17 +28,21 @@ class App extends Component {
     return (
       <ThemeProvider theme={mainTheme}>
 
-        <Router>
-          <NavBar />
-          <Switch>
-              <Route exact path="/" component={ About } />
-              <Route exact path="/play" component={ Play } />
-              <Route exact path="/hottest" component={ PicCollection } />
-              <Route component={ErrorPage} />
-          </Switch>
-          <Footer />
+        
+     
 
-        </Router>
+          <Router>
+            <NavBar />
+            <Switch>
+                <Route exact path="/" component={ About } />
+                <Route exact path="/play" component={ Play } />
+                <Route exact path="/hottest" component={ PicCollection } />
+                <Route component={ErrorPage} />
+            </Switch>
+          </Router>
+     
+          <Footer />
+        
       </ThemeProvider>
     );
     
