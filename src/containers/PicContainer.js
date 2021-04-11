@@ -6,7 +6,7 @@ import Loading from '../components/Loading'
 import VoteButton from '../components/VoteButton'
 import { removeHighlight } from '../helpers/picHelpers'
 import Pic from '../components/Pic'
-import '../styles/picStyle.css'
+import '../styles/picStyles.css'
 
 class PicContainer extends Component {
   
