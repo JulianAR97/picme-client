@@ -4,8 +4,8 @@ import Typography from '@material-ui/core/Typography';
 const Footer = () => {
 
   return (
-    <div style={{align: 'center'}}>
-      <Typography variant="body2" align="center">
+    <div style={{textAlign: 'center', marginTop: '80px'}}>
+      <Typography variant="body2"  style={{align: 'center', display: 'inline-block'}}>
           <p>&copy;PicMe 2021</p>
           <p>Powered By Picsum</p>
       </Typography>
