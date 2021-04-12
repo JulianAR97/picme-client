@@ -26,7 +26,7 @@ class PicContainer extends Component {
       if (pic) {
         this.props.updatePic({...pic, likes: pic.likes + 1})
       } else {
-        this.props.addPic({...this.props.pic, likes: this.props.pic.likes + 1})
+        this.props.addPic({...this.props.pic, likes: this.props.pic.likes + 1}, this.props.userUUID)
       }
     } else {
       event.target.className += ' highlightRed'
@@ -81,6 +81,7 @@ class PicContainer extends Component {
 const mapStateToProps = state => ({
   pic: state.pic,
   pics: state.pics,
+  userUUID: state.cookie,
   loading: state.loading
 })
 

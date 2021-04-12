@@ -43,10 +43,11 @@ export const getMyCollection = (userUUID) => {
 
 // (pic, history for later)
 
-export const addPic = (pic) => {
+export const addPic = (pic, userUUID) => {
   // Maybe get another pic here
+  debugger;
   return dispatch => {
-    fetch('http://localhost:3001/pics', {
+    fetch(`http://localhost:3001/users/${userUUID}/pics`, {
       method: 'POST',
       headers: {
         "Accept": "application/json",
