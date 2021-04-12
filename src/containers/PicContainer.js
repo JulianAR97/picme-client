@@ -36,7 +36,7 @@ class PicContainer extends Component {
     }
     // Still lagging. Look into component lifecycle methods
     const updateVoteButton = () => {
-      if (!this.props.picLoading) {
+      if (!this.props.loading) {
         removeHighlight()
       } else {
         setTimeout(updateVoteButton, 300)
@@ -50,7 +50,7 @@ class PicContainer extends Component {
 
   render() {
     
-    if (this.props.picLoading) {
+    if (this.props.loading) {
       
       return <Loading />
     
@@ -81,7 +81,7 @@ class PicContainer extends Component {
 const mapStateToProps = state => ({
   pic: state.pic,
   pics: state.pics,
-  picLoading: state.picLoading
+  loading: state.loading
 })
 
 export default connect(mapStateToProps, {getPic, addPic, updatePic})(PicContainer)
