@@ -2,10 +2,11 @@ import {sortByLikes} from '../helpers/picHelpers'
 
 const initialState = {
   pic: {},
-  picsLoading: true,
-  picLoading: true,
+  loading: true,
   pics: [],
-  hottest: []
+  hottest: [],
+  cookie: '',
+  myCollection: []
 }
 
 const picsReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ const picsReducer = (state = initialState, action) => {
     case "SET_PIC":
       return {
         ...state,
-        picLoading: false,
+        loading: false,
         pic: {...action.pic, likes: 0}
       }
 
@@ -28,10 +29,17 @@ const picsReducer = (state = initialState, action) => {
     case "SET_PICS":
       return {
         ...state,
-        picsLoading: false,
+        loading: false,
         pics: action.pics,
         // add hottest here so that only one fetch call needs to be make to api
         hottest: sortByLikes(action.pics).slice(0, 100)
+      }
+    
+    case "SET_MY_COLLECTION":
+      return {
+        ...state,
+        loading: false,
+        myCollection: action.myCollection
       }
     
     case "ADD_PIC":
@@ -47,6 +55,13 @@ const picsReducer = (state = initialState, action) => {
         ...state,
         pics: [...state.pics.slice(0, idx), action.pic, ...state.pics.slice(idx + 1)]
       })
+
+    case "SET_COOKIE":
+      return ({
+        ...state,
+        cookie: action.cookie
+      })
+
     default:
       return state;
     
