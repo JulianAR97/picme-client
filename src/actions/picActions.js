@@ -32,6 +32,15 @@ export const getPics = () => {
   }
 }
 
+export const getMyCollection = (userUUID) => {
+  return dispatch => {
+    dispatch({type: "LOADING"})
+    fetch(`http://localhost:3001/users/${userUUID}/pics`)
+      .then(resp => resp.json())
+      .then(pics => dispatch({type: "SET_MY_COLLECTION", pics}))
+  }
+}
+
 // (pic, history for later)
 
 export const addPic = (pic) => {
@@ -68,6 +77,12 @@ export const updatePic = (pic) => {
       .then(pic => {
         dispatch({type: "UPDATE_PIC", pic})
       })
+  }
+}
+
+export const setCookie = (cookie) => {
+  return dispatch => {
+    dispatch({type: "SET_COOKIE", cookie})
   }
 }
 
